@@ -1,50 +1,28 @@
-// use local storage to manage cart data
-const addToDb = id =>{
+const addToDb = (id)=>{
     let shoppingCart = getStoredCart();
-
-    //get the shopping cart from local storage
-    const storedCart = localStorage.getItem('shopping-cart');
-    if(storedCart){
-        shoppingCart = JSON.parse(storedCart);
-    }
-
-    // add quantity
-    const quantity = shoppingCart[id];
-    if(quantity){
-        const newQuantity = quantity + 1;
-        shoppingCart[id] = newQuantity;
-    }
-    else{
+    if(shoppingCart[id]){
+        shoppingCart[id] += 1;
+    }else{
         shoppingCart[id] = 1;
     }
-    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
-}
-
-const removeFromDb = id =>{
-    const storedCart = localStorage.getItem('shopping-cart');
-    if(storedCart){
-        const shoppingCart = JSON.parse(storedCart);
-        if(id in shoppingCart){
-            delete shoppingCart[id];
-            localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
-        }
-    }
+    localStorage.setItem('shopping-cart',JSON.stringify(shoppingCart));
 }
 const getStoredCart = ()=>{
     let shoppingCart = {};
-    const storedCart = localStorage.getItem('shopping-cart');
+    let storedCart = JSON.parse(localStorage.getItem('shopping-cart'));
     if(storedCart){
-        shoppingCart = JSON.parse(storedCart);
+        shoppingCart = storedCart;
     }
     return shoppingCart;
 }
-const deleteShoppingCart = () =>{
+const deleteToCart = (id)=>{
+    let storedCart = getStoredCart();
+    if(id in storedCart){
+       delete storedCart[id];
+    }
+    localStorage.setItem('shopping-cart',JSON.stringify(storedCart));
+}
+const deleteShoppingCart = ()=>{
     localStorage.removeItem('shopping-cart');
 }
-
-export {
-    addToDb, 
-    removeFromDb,
-    getStoredCart,
-    deleteShoppingCart
-}
+export {addToDb,getStoredCart,deleteToCart,deleteShoppingCart};

@@ -1,0 +1,35 @@
+.shop-container{
+    display:grid;
+    grid-template-columns: 4fr 1fr;
+    gap:20px;
+}
+.grid-container{
+    display: flex;
+    justify-content: center;
+}
+.product-container{
+    width:90%;
+    display: grid;
+    gap:20px;
+    margin-top:50px;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.pagination{
+    width:90%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button,select{
+    margin-right:10px;
+    padding:10px 15px;
+    background-color: white;
+    border:2px solid orange;
+    cursor: pointer;
+}
+.pagination .selected {
+    background-color: orange;
+    color:white;
+}

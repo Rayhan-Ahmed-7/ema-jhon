@@ -1,0 +1,23 @@
+.header{
+    background-color: #1C2B35;
+    height:80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar ul{
+    display: flex;
+
+}
+.navbar ul li a{
+    color:white;
+    margin-left:20px;
+}
+.navbar ul li a:hover{
+    color:orange;
+}
